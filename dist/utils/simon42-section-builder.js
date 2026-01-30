@@ -45,7 +45,7 @@ export function createOverviewSection(data) {
   }
 
   // Füge Search-Card hinzu wenn aktiviert
-  if (showSearchCard) {
+   (showSearchCard) {
     cards.push({
       type: "custom:search-card",
       grid_options: {
@@ -74,7 +74,7 @@ export function createOverviewSection(data) {
   ];
 
   // Covers optional hinzufügen
-  if (showCoversSummary) {
+   (showCoversSummary) {
     summaryCards.push({
       type: "custom:simon42-summary-card",
       summary_type: "covers",
@@ -96,7 +96,7 @@ export function createOverviewSection(data) {
   );
 
   // Layout-Logik: Dynamisch an Anzahl der Cards anpassen
-  if (summariesColumns === 4) {
+   (summariesColumns === 4) {
     // Bei 4 Spalten: Alle Cards in einer Reihe
     cards.push({
       type: "horizontal-stack",
@@ -119,7 +119,7 @@ export function createOverviewSection(data) {
   const favoriteEntities = (config.favorite_entities || [])
     .filter(entityId => hass.states[entityId] !== undefined);
 
-  if (favoriteEntities.length > 0) {
+   (favoriteEntities.length > 0) {
     cards.push({
       type: "heading",
       heading: "Müllabfuhr"
@@ -131,7 +131,7 @@ export function createOverviewSection(data) {
         entity: entityId,
         show_entity_picture: true,
         vertical: false,
-        if (entityId == "sensor.gelbetonne") {
+         (entityId === sensor.gelbetonne) {
           color: yellow,
         }
         features_position: "bottom"
@@ -153,7 +153,7 @@ export function createOverviewSection(data) {
  */
 export function createAreasSection(visibleAreas, groupByFloors = false, hass = null) {
   // Wenn keine Etagen-Gruppierung gewünscht: alte Logik
-  if (!groupByFloors || !hass) {
+   (!groupByFloors || !hass) {
     return {
       type: "grid",
       cards: [
@@ -182,8 +182,8 @@ export function createAreasSection(visibleAreas, groupByFloors = false, hass = n
   const areasWithoutFloor = [];
 
   visibleAreas.forEach(area => {
-    if (area.floor_id) {
-      if (!areasByFloor.has(area.floor_id)) {
+     (area.floor_id) {
+       (!areasByFloor.has(area.floor_id)) {
         areasByFloor.set(area.floor_id, []);
       }
       areasByFloor.get(area.floor_id).push(area);
@@ -235,7 +235,7 @@ export function createAreasSection(visibleAreas, groupByFloors = false, hass = n
   });
 
   // Bereiche ohne Etage (falls vorhanden)
-  if (areasWithoutFloor.length > 0) {
+   (areasWithoutFloor.length > 0) {
     sections.push({
       type: "grid",
       cards: [
@@ -273,11 +273,11 @@ export function createAreasSection(visibleAreas, groupByFloors = false, hass = n
  */
 export function createWeatherEnergySection(weatherEntity, showWeather, showEnergy, groupByFloors = false) {
   // Wenn Etagen-Gruppierung aktiv: Separate Sections zurückgeben
-  if (groupByFloors) {
+   (groupByFloors) {
     const sections = [];
     
     // Weather Section (wenn vorhanden UND aktiviert)
-    if (weatherEntity && showWeather) {
+     (weatherEntity && showWeather) {
       sections.push({
         type: "grid",
         cards: [
@@ -297,7 +297,7 @@ export function createWeatherEnergySection(weatherEntity, showWeather, showEnerg
     }
     
     // Energie Section (wenn aktiviert)
-    if (showEnergy) {
+     (showEnergy) {
       sections.push({
         type: "grid",
         cards: [
@@ -323,7 +323,7 @@ export function createWeatherEnergySection(weatherEntity, showWeather, showEnerg
   const cards = [];
   
   // Füge Weather Forecast hinzu, wenn eine Weather-Entität gefunden wurde UND aktiviert
-  if (weatherEntity && showWeather) {
+   (weatherEntity && showWeather) {
     cards.push({
       type: "heading",
       heading: "Wetter",
@@ -338,7 +338,7 @@ export function createWeatherEnergySection(weatherEntity, showWeather, showEnerg
   }
   
   // Energie-Dashboard (nur wenn aktiviert)
-  if (showEnergy) {
+   (showEnergy) {
     cards.push({
       type: "heading",
       heading: "Energie",
@@ -352,7 +352,7 @@ export function createWeatherEnergySection(weatherEntity, showWeather, showEnerg
   }
   
   // Gib null zurück wenn keine Karten vorhanden (verhindert leere Section)
-  if (cards.length === 0) {
+   (cards.length === 0) {
     return null;
   }
   
