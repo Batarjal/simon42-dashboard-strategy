@@ -132,7 +132,7 @@ export function createOverviewSection(data) {
         show_entity_picture: true,
         vertical: false,
         if (entityId === "sensor.gelbetonne") {
-          color: yellow,
+          color: "yellow",
         }
         features_position: "bottom"
       });
