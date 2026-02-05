@@ -126,12 +126,17 @@ export function createOverviewSection(data) {
     });
     
     favoriteEntities.forEach(entityId => {
+      if (entityId === sensor.blauetonne) color = "blue";
+      else if (entityId === sensor.braunetonne) color = "brown";
+      else if (entityId === sensor.gelbetonne) color = "yellow";
+      else if (entityId === sensor.grauetonne) color = "gray";
       cards.push({
         type: "tile",
         entity: entityId,
         show_entity_picture: true,
         vertical: false,
-        features_position: "bottom"
+        features_position: "bottom",
+        color: color
       });
     });
   }
