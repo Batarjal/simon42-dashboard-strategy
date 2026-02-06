@@ -126,8 +126,8 @@ export function createOverviewSection(data) {
     });
     
     favoriteEntities.forEach(entityId => {
-      farbe == "white";
-      if (entityId === 'sensor.gelbetonne') farbe = "yellow";
+      let farbe = "white";
+      if (entityId == 'sensor.gelbetonne') let farbe = "yellow";
       cards.push({
         type: "tile",
         entity: entityId,
