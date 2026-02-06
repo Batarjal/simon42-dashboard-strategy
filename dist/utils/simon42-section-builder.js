@@ -126,12 +126,14 @@ export function createOverviewSection(data) {
     });
     
     favoriteEntities.forEach(entityId => {
+      if (entityId = "sensor.gelbetonne") farbe = "yellow";
       cards.push({
         type: "tile",
         entity: entityId,
         show_entity_picture: true,
         vertical: false,
-        features_position: "bottom"
+        features_position: "bottom",
+        color: farbe
       });
     });
   }
